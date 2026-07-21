@@ -1,0 +1,25 @@
+    #butao{
+        height: 20px;
+        width: fit-content;
+    }
+    #rotador{
+        border: 1px solid black;
+        width: fit-content;
+    }
+
+    #velocidade{
+        display: none;
+    }
+
+    #ligar{
+        display: none;
+        margin-left: 20px;
+    }
+
+    #lligar{
+        display: none;
+    }
+
+    #brligar{
+        display: none;
+    }
