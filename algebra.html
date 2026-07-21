@@ -7,17 +7,54 @@
     <title>Document</title>
 </head>
 <style>
+    #butao{
+        height: 20px;
+        width: fit-content;
+    }
+    #rotador{
+        border: 1px solid black;
+        width: fit-content;
+    }
 
+    #velocidade{
+        display: none;
+    }
+
+    #ligar{
+        display: none;
+        margin-left: 20px;
+    }
+
+    #lligar{
+        display: none;
+    }
+
+    #brligar{
+        display: none;
+    }
 </style>
 
 <body>
     <canvas id="canvas" height="500" width="500" style="border: 1px solid black;"></canvas>
-    <input id="range" type="range" min="0" max="360" placeholder="slamano">
+    <div id="rotador"><input id="range" type="range" min="0" max="360" placeholder="slamano">
     <span id="angulo"></span>
+    </div> 
     <input id="X" type="number" placeholder="slamano3">
     <input id="Y" type="number" placeholder="slamano4">
-    <button title="slamano2" id="butao"></button>
-    <input type="checkbox" id="espelhar" title="espelhar">
+    <button title="slamano2" id="butao">Inserir no plano</button>
+    <br>
+    <div id="ferramentas">
+    <input type="checkbox"  id="espelhar" title="espelhar">
+    <label for="espelhar" id="lespelhar">Espelhar</label>
+    <br>
+    <input type="checkbox" id="ligar">
+    <label for="ligar" id="lligar">Ligar pontos</label>
+    <br id="brligar">
+    <input type="checkbox" id="rotacionar">
+    <label for="rotacionar">Girar</label>
+    <br>
+    
+    </div>
     <script type="module">
         import { create, all } from "https://cdn.jsdelivr.net/npm/mathjs@14/+esm";
         let canva = document.getElementById("canvas")
@@ -25,14 +62,24 @@
         let range = document.getElementById("range")
         let butao = document.getElementById("butao")
         let espelhar = document.getElementById("espelhar")
-        let girar = document.getElementById("girar")
-        let velocidade = document.getElementById("velocidadeRotacao")
+        let ligar = document.getElementById("ligar")
         let inputX = document.getElementById("X")
         let inputY = document.getElementById("Y")
         let matematica = create(all)
         let X = canva.width / 2
         let Y = canva.height / 2
+        let angulo = 1
+        function eixos(){
+        ctx.beginPath()
+            ctx.moveTo(canva.width / 2, 0)
+            ctx.lineTo(canva.width / 2, 500)
+            ctx.stroke()
 
+         ctx.beginPath()
+            ctx.moveTo(0, canva.height / 2)
+            ctx.lineTo(500, canva.height / 2)
+            ctx.stroke()
+        }
 
 
         function rotacionar(tethaGraus) {
@@ -44,11 +91,6 @@
             let vetor = [[X], [Y]]
             let resultado = matematica.multiply(matrizRotacao, vetor).valueOf()
 
-
-
-
-
-
             desenhar(resultado[0][0], resultado[1][0])
 
             return resultado
@@ -58,29 +100,27 @@
             ctx.clearRect(0, 0, canva.width, canva.height)
             let canvasX = canva.width / 2 + X
             let canvasY = canva.height / 2 - Y
-            ctx.beginPath()
-            ctx.moveTo(canva.width / 2, 0)
-            ctx.lineTo(canva.width / 2, 500)
-            ctx.stroke()
-
-            ctx.beginPath()
-            ctx.moveTo(0, canva.height / 2)
-            ctx.lineTo(500, canva.height / 2)
-            ctx.stroke()
+            eixos()
             ctx.beginPath()
             ctx.arc(canvasX, canvasY, 5, 0, Math.PI * 2)
             ctx.fillStyle = "red"
             ctx.fill()
             if (espelhar.checked) {
                 ctx.beginPath()
-                ctx.arc((canvas.width / 2 - X), (canvas.height / 2 + Y), 5, 0, Math.PI * 2)
+                ctx.arc((canva.width / 2 - X), (canva.height / 2 + Y), 5, 0, Math.PI * 2)
                 ctx.fillStyle = "blue"
                 ctx.fill()
                 ctx.stroke()
             }
-            else {
+            if (ligar.checked){
+                ctx.beginPath()
+                ctx.moveTo(canvasX, canvasY)
+                ctx.lineTo((canva.width / 2 - X), (canva.height / 2 + Y))
                 ctx.stroke()
             }
+            
+                ctx.stroke()
+            
         }
 
         butao.addEventListener("click", () => {
@@ -94,14 +134,47 @@
             Y = Number(inputY.value)
             rotacionar(Number(range.value))
 
-            document.getElementById("angulo").innerHTML = Number(range.value)
+            document.getElementById("angulo").innerHTML = Number(range.value ) + "°"
         })
 
 
 
 
+        canva.addEventListener("click", () => {
+        console.log(event.offsetX, event.offsetX - 250 ,event.offsetY,  500 - event.offsetY)
+           desenhar(event.offsetX - 250 , 250 - event.offsetY )
+        })
 
+       
+        
 
+       
+        setInterval(()=>{
+
+            if(document.getElementById("rotacionar").checked){
+        
+                    if(angulo > 359){
+                        angulo = 1
+                     }
+                    rotacionar(angulo)
+                        angulo++
+       }}, 1)
+        setInterval(()=>{
+            if(espelhar.checked){
+                document.getElementById("ligar").style.display = "block"
+                document.getElementById("lligar").style.display = "block"
+                document.getElementById("brligar").style.display = "block"
+            }
+            else{
+                ligar.checked= false
+                document.getElementById("ligar").style.display = "none"
+                document.getElementById("lligar").style.display = "none"
+                document.getElementById("brligar").style.display = "none"
+                
+            }
+            
+        }, 1)
+        eixos()
     </script>
 </body>
 
