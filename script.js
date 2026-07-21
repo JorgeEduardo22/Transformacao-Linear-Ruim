@@ -101,8 +101,9 @@
                     rotacionar(angulo)
                         angulo++
        }}, 1)
-        setInterval(()=>{
-            if(espelhar.checked){
+        espelhar.addEventListener("change", () => {
+
+        if(espelhar.checked){
                 document.getElementById("ligar").style.display = "block"
                 document.getElementById("lligar").style.display = "block"
                 document.getElementById("brligar").style.display = "block"
@@ -113,7 +114,6 @@
                 document.getElementById("lligar").style.display = "none"
                 document.getElementById("brligar").style.display = "none"
                 
-            }
-            
-        }, 1)
+
+        }})
         eixos()
