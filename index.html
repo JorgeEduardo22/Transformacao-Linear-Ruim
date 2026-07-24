@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    
     <canvas id="canvas" height="500" width="500" style="border: 1px solid black;"></canvas>
     <div id="rotador"><input id="range" type="range" min="0" max="360" placeholder="slamano">
     <span id="angulo"></span>
@@ -28,9 +29,17 @@
     <br id="brligar">
     <input type="checkbox" id="rotacionar">
     <label for="rotacionar">Girar</label>
+    <br id="brgirar">
+    <input type="range" min="10" max="100" id="velocidade">
+    <br id="brvelocidade">
+    <div>
+    <input type="checkbox" id="escalarAmbos">
+    <label for="escalarAmbos">Escalar ambos os eixos</label>
     <br>
-    
+    <input type="number" id="inputEscalarAmbos" value="1">
+    <br id="brEscalarAmbos">
     </div>
+</div>
     <script type="module" src="script.js"></script>
 </body>
 
