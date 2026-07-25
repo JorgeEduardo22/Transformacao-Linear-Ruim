@@ -36,6 +36,7 @@ function setCoordenadas(x, y) {
 }
 
 function eixos() {
+  ctx.lineWidth = 2.5;
   ctx.beginPath();
   ctx.moveTo(canva.width / 2, 0);
   ctx.lineTo(canva.width / 2, 500);
@@ -66,6 +67,7 @@ function desenhar() {
   let canvasX = canva.width / 2 + setCoordenadas().x;
   let canvasY = canva.height / 2 - setCoordenadas().y;
   eixos();
+  ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.arc(canvasX, canvasY, 5, 0, Math.PI * 2);
   ctx.fillStyle = "red";
@@ -90,6 +92,7 @@ function desenhar() {
       canva.width / 2 - setCoordenadas().x,
       canva.height / 2 + setCoordenadas().y,
     );
+
     ctx.stroke();
   }
   ctx.stroke();
@@ -107,10 +110,14 @@ range.addEventListener("input", () => {
   document.getElementById("angulo").innerHTML = Number(range.value) + "°";
 });
 
-canva.addEventListener("click", () => {
+canva.addEventListener("click", (event) => {
   setCoordenadas(event.offsetX - 250, 250 - event.offsetY);
   setPontoOriginal();
   desenhar();
+});
+canva.addEventListener("mousemove", (event) => {
+  let mouseCoords = document.getElementById("mouseCoords");
+  mouseCoords.innerHTML = `X: ${event.offsetX - 250} Y: ${250 - event.offsetY}`;
 });
 
 function girar() {
