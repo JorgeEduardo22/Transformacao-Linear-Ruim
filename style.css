@@ -1,33 +1,43 @@
-    #butao{
-        height: 20px;
-        width: fit-content;
-    }
-    #rotador{
-        border: 1px solid black;
-        width: fit-content;
-    }
+#butao {
+  height: 20px;
+  width: fit-content;
+}
+#canvas {
+  display: grid;
+  background-image:
+    linear-gradient(to right, black 1px, transparent 1px),
+    linear-gradient(to bottom, black 1px, transparent 1px);
+  background-size: 10px 10px;
+  background-color: rgb(0 0 0/ 50%);
+}
 
-    #velocidade, #brvelocidade{
-        display: none;
-    }
+#rotador {
+  border: 1px solid black;
+  width: fit-content;
+}
 
-    #ligar{
-        display: none;
-        margin-left: 20px;
-    }
+#velocidade,
+#brvelocidade {
+  display: none;
+}
 
-    #lligar{
-        display: none;
-    }
+#ligar {
+  display: none;
+  margin-left: 20px;
+}
 
-    #brligar{
-        display: none;
-    }
+#lligar {
+  display: none;
+}
 
-    #inputEscalarAmbos{
-        display: none;
-    }
+#brligar {
+  display: none;
+}
 
-    #brEscalarAmbos{
-        display: none;
-    }
+#inputEscalarAmbos {
+  display: none;
+}
+
+#brEscalarAmbos {
+  display: none;
+}

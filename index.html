@@ -1,46 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-</head>
-
-<body>
-    
-    <canvas id="canvas" height="500" width="500" style="border: 1px solid black;"></canvas>
-    <div id="rotador"><input id="range" type="range" min="0" max="360" placeholder="slamano">
-    <span id="angulo"></span>
-    </div> 
-    <p>Insira valores entre 250 e -250</p> 
-    <input id="X" type="number" placeholder="slamano3">
-    <input id="Y" type="number" placeholder="slamano4">
-    <button title="slamano2" id="butao">Inserir no plano</button>
-    <br>
-    <div id="ferramentas">
-    <input type="checkbox"  id="espelhar" title="espelhar">
-    <label for="espelhar" id="lespelhar">Espelhar</label>
-    <br>
-    <input type="checkbox" id="ligar">
-    <label for="ligar" id="lligar">Ligar pontos</label>
-    <br id="brligar">
-    <input type="checkbox" id="rotacionar">
-    <label for="rotacionar">Girar</label>
-    <br id="brgirar">
-    <input type="range" min="10" max="100" id="velocidade">
-    <br id="brvelocidade">
-    <div>
-    <input type="checkbox" id="escalarAmbos">
-    <label for="escalarAmbos">Escalar ambos os eixos</label>
-    <br>
-    <input type="number" id="inputEscalarAmbos" value="1">
-    <br id="brEscalarAmbos">
+  <body>
+    <canvas
+      id="canvas"
+      height="500"
+      width="500"
+      style="border: 1px solid black"
+    ></canvas>
+    <div id="rotador">
+      <input id="range" type="range" min="0" max="360" placeholder="slamano" />
+      <span id="angulo"></span>
     </div>
-</div>
+    <p>Insira valores entre 250 e -250</p>
+    <input id="X" type="number" placeholder="slamano3" />
+    <input id="Y" type="number" placeholder="slamano4" />
+    <button title="slamano2" id="butao">Inserir no plano</button>
+    <br />
+    <div id="ferramentas">
+      <input type="checkbox" id="espelhar" title="espelhar" />
+      <label for="espelhar" id="lespelhar">Espelhar</label>
+      <br />
+      <input type="checkbox" id="ligar" />
+      <label for="ligar" id="lligar">Ligar pontos</label>
+      <br id="brligar" />
+      <input type="checkbox" id="rotacionar" />
+      <label for="rotacionar">Girar</label>
+      <br id="brgirar" />
+      <input type="range" min="10" max="100" id="velocidade" />
+      <br id="brvelocidade" />
+      <div>
+        <input type="checkbox" id="escalarAmbos" />
+        <label for="escalarAmbos">Escalar ambos os eixos</label>
+        <br />
+        <input type="number" id="inputEscalarAmbos" value="1" />
+        <br id="brEscalarAmbos" />
+      </div>
+    </div>
     <script type="module" src="script.js"></script>
-</body>
-
+  </body>
 </html>
