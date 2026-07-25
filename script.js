@@ -20,13 +20,6 @@ let angulo = 1;
 let animacao;
 let velocidade = 1;
 
-let area = canva.width * canva.height;
-
-for (let i = 0; i < area; i++) {
-  let grid = document.createElement("div");
-  grid.classList.add("grid");
-  canva.appendChild(grid);
-}
 function setPontoOriginal() {
   pontosOriginais = setCoordenadas();
 }
